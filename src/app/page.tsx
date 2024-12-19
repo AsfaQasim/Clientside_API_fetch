@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface IRecipe {
   id: number;
@@ -20,6 +22,10 @@ interface IRecipe {
 }
 
 const Clientside = () => {
+  
+    useEffect(() => {
+      AOS.init({});
+    }, []);
   const [data, setData] = useState<IRecipe[]>([]);
 
   useEffect(() => {
@@ -34,10 +40,15 @@ const Clientside = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center font-bold text-5xl my-5">
+      <div className="flex justify-center items-center font-bold text-5xl my-5 "data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500"> 
+
         <h1>Asfa&apos;s Recipes</h1>
       </div>
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
         {data.map((recipe) => (
           <div
             key={recipe.id}
